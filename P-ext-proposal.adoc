@@ -2,7 +2,7 @@ image:media/image1.jpeg[media/image1,width=291,height=46]
 
 Preliminary in-progress RISC-V "P" Extension
 
-Version 0.1-draft
+Version 0.12-draft
 
 This document is in the Development state. Assume anything can change.
 
