@@ -16,60 +16,8 @@ Revision History
 |0.12 |01/17/2026 |Jiawei |Fixed cols format issue.
 |===
 
-Table of Contents
-
-link:#introduction[Chapter 1 Introduction link:#introduction[4]]
-
-link:#instruction-mnemonic-naming-conventions[Chapter 2 Instruction
-Mnemonic Naming Conventions
-link:#instruction-mnemonic-naming-conventions[5]]
-
-link:#element-operation-names[2.1 Element Operation Names
-link:#element-operation-names[5]]
-
-link:#combining-and-augmenting-operation-names[2.2 Combining and
-augmenting operation names
-link:#combining-and-augmenting-operation-names[7]]
-
-link:#conventions-for-packed-simd-instruction-names[2.3 Conventions for
-packed-SIMD instruction names
-link:#conventions-for-packed-simd-instruction-names[8]]
-
-link:#basic-packed-simd-instructions[2.3.1 Basic packed-SIMD
-instructions link:#basic-packed-simd-instructions[8]]
-
-link:#packed-simd-instructions-with-a-scalar-second-operand[2.3.2
-Packed-SIMD instructions with a scalar second operand
-link:#packed-simd-instructions-with-a-scalar-second-operand[9]]
-
-link:#widening-and-narrowing-packed-simd-instructions[2.3.3 Widening and
-narrowing packed-SIMD instructions
-link:#widening-and-narrowing-packed-simd-instructions[9]]
-
-link:#double-wide-packed-simd-instructions[2.3.4 Double-wide packed-SIMD
-instructions link:#double-wide-packed-simd-instructions[10]]
-
-link:#mixed-width-packed-simd-instructions[2.3.5 Mixed-width packed-SIMD
-instructions link:#mixed-width-packed-simd-instructions[11]]
-
-link:#packed-simd-instructions-with-horizontal-additionsubtraction[2.3.6
-Packed-SIMD instructions with horizontal addition/subtraction
-link:#packed-simd-instructions-with-horizontal-additionsubtraction[12]]
-
-link:#packed-simd-instructions-with-exchanged-elements-of-second-operand[2.3.7
-Packed-SIMD instructions with exchanged elements of second operand
-link:#packed-simd-instructions-with-exchanged-elements-of-second-operand[13]]
-
-link:#sail-code-conventions[Chapter 3 Sail Code Conventions
-link:#sail-code-conventions[14]]
-
-link:#_Toc210324913[Chapter 4 Opcodes link:#_Toc210324913[15]]
-
-link:#detailed-instruction-descriptions[Appendix A Detailed Instruction
-Descriptions link:#detailed-instruction-descriptions[16]]
-
-link:#pshadd.h-shift-left-by-one-and-add[A.1 PSH!ADD.H – Shift Left by
-One and Add link:#pshadd.h-shift-left-by-one-and-add[16]]
+:toc:
+:toclevels: 3
 
 == Introduction
 
