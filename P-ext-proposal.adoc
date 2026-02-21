@@ -1513,7 +1513,7 @@ followed by a signed saturating add with `rs2`.
 
 PSSH1SADD.W is encoded in the OP-32 major opcode and is available only in RV64.
 
-[cols="^,^,^,^,^,^,^,^"]
+[cols="^,^,^,^,^,^,^,^,^"]
 |===
 |31|30..28|27|26..25|24..20|19..15|14..12|11..7|6..0
 |1 | f=011|0 | w=01 |  rs2  |  rs1  | 010   |  rd  |0111011
@@ -2542,7 +2542,7 @@ for each byte position, the corresponding byte from `rs2` is placed above the by
 
 ZIP8HP is encoded in the OP-32 major opcode and is available only in RV64. :contentReference[oaicite:1]{index=1}
 
-[cols="^,^,^,^,^,^,^,^"]
+[cols="^,^,^,^,^,^,^,^,^"]
 |===
 |31|30..28|27|26..25|24..20|19..15|14..12|11..7|6..0
 |1 | f=111|0 | w=10 |  rs2  |  rs1  | 010   |  rd  |0111011
