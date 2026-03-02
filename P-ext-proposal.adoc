@@ -376,7 +376,7 @@ narrowing shift right, logical (double-width input)
 
 Many P-extension instructions perform a chained sequence of operations,
 the most common being versions of multiply-add, a multiplication
-followed by an addition or subtraction. A general rul applies to the
+followed by an addition or subtraction. A general rule applies to the
 names of such instructions:
 
 *Operation chains*: When an instruction performs a chained sequence of
@@ -394,7 +394,7 @@ WADDA = WADD (widening addition, first op) + A (accumulate, second op)
 
 The names used for the component operations in a chain may be taken
 verbatim from Table 1, or they may be alternative or abbreviated names
-following additional rules. In the two examples above, onl one of the
+following additional rules. In the two examples above, only one of the
 four component names is directly from Table 1 (‘WADD’, but not MHR’,
 ‘ACC’, or ‘A’). The other three are explained below.
 
@@ -615,7 +615,7 @@ instructions.
 __________________________________________________________________________
 
 *Double- wide packed-SIMD instructions with a scalar second operand*:
-The second operandof an RV32 double-wide packed-SIMD instruction may be
+The second operand of an RV32 double-wide packed-SIMD instruction may be
 a scalar from a register. In that case, the second source is a single
 register, not a register pair, and the instruction’s suffix has the
 combined form ‘.D⟨S⟩ S’, where the ‘D’ stands for doubleword and the
@@ -768,7 +768,7 @@ horizontal sum may be denoted in the instruction name by ‘REDSUM’ for
 reduction sum, or, if the horizontal sum is part of a chain of
 operations, by the shorter abbreviation of just ‘SUM’. The use of the
 name ‘REDSUM’ or ‘SUM’ indicates an explicit intention to sum across all
-lanes, not just by smaller groups of elements as with ‘2ADD’or ‘4ADD’.
+lanes, not just by smaller groups of elements as with ‘2ADD’ or ‘4ADD’.
 The destination operand is necessarily a scalar (not a SIMD array).
 
 Examples of this last rule are these instructions:
@@ -780,7 +780,7 @@ PDIFSUMAU.B = P \{DIF + SUM + Accum} U .B
 __________________________________________________________________________
 
 The V extension has several instructions that reduce across all vector
-elements, with names of the form VRED⟨op⟩.VS for varioius reduction
+elements, with names of the form VRED⟨op⟩.VS for various reduction
 operations ⟨op⟩. One instance of these instructions is VREDSUM.VS for
 summing all elements of a vector.
 
