@@ -30,7 +30,7 @@ OPTIONS := --trace \
            $(XTRA_ADOC_OPTS) \
            -D build \
            --failure-level=ERROR
-REQUIRES := --require=asciidoctor-lists
+REQUIRES := --require=asciidoctor-lists --require=asciidoctor-diagram
 
 .PHONY: all build clean build-container build-no-container build-docs
 
