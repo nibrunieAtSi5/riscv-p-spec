@@ -10705,7 +10705,7 @@ to 2^n - 1. When clamping occurs, the `vxsat` overflow flag is set. Elements
 already within range are passed through unchanged. Available only in RV64.
 
 <<<
-==== SATI (RV64)
+==== SATI
 
 ===== Encoding
 
@@ -10802,7 +10802,7 @@ immediate `uimm5` or `uimm6` and writes the result to `rd`.
 * `vxsat` is set to 1 if saturation occurs.
 
 <<<
-==== USATI (RV64)
+==== USATI
 
 ===== Encoding
 
