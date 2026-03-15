@@ -29506,7 +29506,7 @@ result into the register pair `{X[2*rd_p+1], X[2*rd_p]}` when `rd_p != 0`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -29667,7 +29667,7 @@ results into the register pair `{X[2*rd_p+1], X[2*rd_p]}` when `rd_p != 0`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -29820,7 +29820,7 @@ by `rd_p` when `rd_p != 0`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -29919,7 +29919,7 @@ halfword multiply instruction.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -29976,7 +29976,7 @@ signed×unsigned halfword multiply instruction.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30033,7 +30033,7 @@ unsigned×unsigned halfword multiply instruction.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30141,7 +30141,7 @@ of WMULSU.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30247,7 +30247,7 @@ select the destination register pair `{X[2*rd_p+1], X[2*rd_p]}`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 5, name: 'rdp' },
+    { bits: 5, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30311,7 +30311,7 @@ but uses the rounded variant.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 5, name: 'rdp' },
+    { bits: 5, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30371,7 +30371,7 @@ MQWACC is encoded in a register-pair (rd_p) OP-IMM-32 format and accumulates int
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 5, name: 'rdp' },
+    { bits: 5, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30429,7 +30429,7 @@ uses the rounded variant.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 5, name: 'rdp' },
+    { bits: 5, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30490,7 +30490,7 @@ sum of two halfword products and writes it to the register pair
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30545,7 +30545,7 @@ pair selected by `rd_p` when `rd_p != 0`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30594,7 +30594,7 @@ form of PM2WADDSU.H.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30652,7 +30652,7 @@ register pair selected by `rd_p` when `rd_p != 0`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30701,7 +30701,7 @@ form of PM2WADDU.H.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30759,7 +30759,7 @@ selected by `rd_p` when `rd_p != 0`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30810,7 +30810,7 @@ the register pair selected by `rd_p` when `rd_p != 0`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
@@ -30860,7 +30860,7 @@ register pair selected by `rd_p` when `rd_p != 0`.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x1 },
-    { bits: 4, name: 'rdp' },
+    { bits: 4, name: 'rd_p' },
     { bits: 3, name: 0x2 },
     { bits: 5, name: 'rs1' },
     { bits: 5, name: 'rs2' },
