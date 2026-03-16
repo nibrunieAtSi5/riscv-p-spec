@@ -4,7 +4,7 @@
 :toclevels: 3
 :imagesdir: docs-resources/images
 :title-logo-image: image:risc-v_logo.png["RISC-V International Logo",pdfwidth=3.25in,align=center]
-:revnumber: 0.12-draft
+:revnumber: 0.19-draft
 
 This document is in the Development state. Assume anything can change.
 
@@ -16,6 +16,7 @@ This document is in the Development state. Assume anything can change.
 |0.1 |10/01/2025 |Rich Fuhler |Sample formatting for selected sections
 |0.11 |01/15/2026 |Jiawei |Add encodings, sail codes and descriptions.
 |0.12 |01/17/2026 |Jiawei |Fixed cols format issue.
+|0.19 |03/16/2026 |  | Sync with John Hauser's working draft
 |===
 
 == Introduction
@@ -32,7 +33,7 @@ processing capabilities of the RISC-V CPU IP products. With the addition
 of the RISC-V P instruction set extension, the RISC-V CPUs can now run
 these various DSP applications with lower power and higher performance.
 
-== P extension for Packed Single Instruction Multiple Data, version 0.12
+== P extension for Packed Single Instruction Multiple Data
 
 The P extension depends on Zmmul, Zba and Zbb extensions.
 
