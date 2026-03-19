@@ -5482,6 +5482,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== SSH1SADD (RV32)
@@ -5539,7 +5542,9 @@ else
     X[rd] = to_bits(32, s)
 ----
 
+===== Notes
 
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSH1ADD.DH (RV32)
@@ -5742,6 +5747,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSH1SADD.DW (RV32)
@@ -5819,6 +5827,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 === Add-Subtract Cross
@@ -6109,6 +6120,9 @@ for i = 0 .. (XLEN/32 - 1):
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSAS.WX (RV64)
@@ -6174,6 +6188,9 @@ d[63:32] = res_odd[31:0]
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSA.HX
@@ -6241,6 +6258,9 @@ for i = 0 .. (XLEN/32 - 1):
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSA.WX (RV64)
@@ -6306,6 +6326,9 @@ d[63:32] = res_odd[31:0]
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PAAS.HX
@@ -6740,6 +6763,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSA.DHX (RV32)
@@ -6813,6 +6839,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PAAS.DHX (RV32)
@@ -7569,6 +7598,9 @@ for i = 0 .. (XLEN/8 - 1):
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSABS.H
@@ -7622,6 +7654,9 @@ for i = 0 .. (XLEN/16 - 1):
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSABS.DB (RV32)
@@ -7691,6 +7726,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSABS.DH (RV32)
@@ -7760,6 +7798,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 === Reduction Sum
@@ -10656,7 +10697,7 @@ X[rd_p * 2 + 1] = d_hi
 
 ===== Mnemonic
 
-psati.h _rd_, _rs1_, _uimm4_
+psati.h _rd_, _rs1_, _width_
 
 ===== Encoding
 
@@ -10681,7 +10722,7 @@ packed halfword elements with a 4-bit unsigned immediate.
 ===== Description
 
 PSATI.H saturates each packed 16-bit halfword element of `rs1` to the signed
-range [-(2^n), 2^n - 1], where n is specified by the 4-bit unsigned immediate.
+range [-(2^width-1^), 2^width-1^-1], where `width` is specified by `uimm4`+1.
 If an element exceeds the range, the result is clamped to the nearest bound and
 the `vxsat` overflow flag is set. Elements already within range are passed
 through unchanged.
@@ -10709,24 +10750,16 @@ for i = 0 .. (XLEN/16 - 1):
 X[rd] = d
 ----
 
-===== Mnemonic
+===== Notes
 
-psati.h _rd_, _rs1_, _width_
-
-===== Description
-
-PSATI.H saturates each packed 16-bit halfword element of `rs1` to the signed
-range [-(2^width-1^), 2^width-1^-1], where `width` is specified by `uimm4`+1.
-If an element exceeds the range, the result is clamped to the nearest bound and
-the `vxsat` overflow flag is set. Elements already within range are passed
-through unchanged.
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSATI.W (RV64)
 
 ===== Mnemonic
 
-psati.w _rd_, _rs1_, _uimm5_
+psati.w _rd_, _rs1_, _width_
 
 ===== Encoding
 
@@ -10751,7 +10784,7 @@ packed word elements with a 5-bit unsigned immediate. Available only in RV64.
 ===== Description
 
 PSATI.W saturates each packed 32-bit word element of `rs1` to the signed range
-[-(2^n), 2^n - 1], where n is specified by the 5-bit unsigned immediate. If an
+[-(2^width-1^), 2^width-1^-1], where `width` is specified by `uimm5`+1. If an
 element exceeds the range, the result is clamped to the nearest bound and the
 `vxsat` overflow flag is set. Elements already within range are passed through
 unchanged. Available only in RV64.
@@ -10779,17 +10812,9 @@ for i = 0 .. (XLEN/32 - 1):
 X[rd] = d
 ----
 
-===== Mnemonic
+===== Notes
 
-psati.w _rd_, _rs1_, _width_
-
-===== Description
-
-PSATI.W saturates each packed 32-bit word element of `rs1` to the signed range
-[-(2^width-1^), 2^width-1^-1], where `width` is specified by `uimm5`+1. If an
-element exceeds the range, the result is clamped to the nearest bound and the
-`vxsat` overflow flag is set. Elements already within range are passed through
-unchanged. Available only in RV64.
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PUSATI.H
@@ -10821,9 +10846,9 @@ packed halfword elements with a 4-bit unsigned immediate.
 ===== Description
 
 PUSATI.H performs unsigned saturation on each packed 16-bit halfword element of
-`rs1` to the range [0, 2^n - 1], where n is specified by the 4-bit unsigned
-immediate. Negative values are clamped to zero and values exceeding the maximum
-are clamped to 2^n - 1. When clamping occurs, the `vxsat` overflow flag is set.
+`rs1` to the range [0, 2^width^-1], where `width` is specified by `uimm4`.
+Negative values are clamped to zero and values exceeding the maximum are clamped
+to 2^width^-1. When clamping occurs, the `vxsat` overflow flag is set.
 Elements already within range are passed through unchanged.
 
 ===== Operation
@@ -10848,17 +10873,9 @@ for i = 0 .. (XLEN/16 - 1):
 X[rd] = d
 ----
 
-===== Mnemonic
+===== Notes
 
-pusati.h _rd_, _rs1_, _uimm4_
-
-===== Description
-
-PUSATI.H performs unsigned saturation on each packed 16-bit halfword element of
-`rs1` to the range [0, 2^width^-1], where `width` is specified by `uimm4`.
-Negative values are clamped to zero and values exceeding the maximum are clamped
-to 2^width^-1. When clamping occurs, the `vxsat` overflow flag is set.
-Elements already within range are passed through unchanged.
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PUSATI.W (RV64)
@@ -10890,9 +10907,9 @@ packed word elements with a 5-bit unsigned immediate. Available only in RV64.
 ===== Description
 
 PUSATI.W performs unsigned saturation on each packed 32-bit word element of `rs1`
-to the range [0, 2^n - 1], where n is specified by the 5-bit unsigned immediate.
+to the range [0, 2^width^-1], where `width` is specified by `uimm5`.
 Negative values are clamped to zero and values exceeding the maximum are clamped
-to 2^n - 1. When clamping occurs, the `vxsat` overflow flag is set. Elements
+to 2^width^-1. When clamping occurs, the `vxsat` overflow flag is set. Elements
 already within range are passed through unchanged. Available only in RV64.
 
 ===== Operation
@@ -10917,25 +10934,16 @@ for i = 0 .. (XLEN/32 - 1):
 X[rd] = d
 ----
 
-===== Mnemonic
+===== Notes
 
-pusati.w _rd_, _rs1_, _uimm5_
-
-===== Description
-
-PUSATI.W performs unsigned saturation on each packed 32-bit word element of `rs1`
-to the range [0, 2^width^-1], where `width` is specified by `uimm5`.
-Negative values are clamped to zero and values exceeding the maximum are clamped
-to 2^width^-1. When clamping occurs, the `vxsat` overflow flag is set. Elements
-already within range are passed through unchanged. Available only in RV64.
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== SATI
 
 ===== Mnemonic
 
-sati _rd_, _rs1_, _uimm5_ (RV32) +
-sati _rd_, _rs1_, _uimm6_ (RV64)
+sati _rd_, _rs1_, _width_
 
 ===== Encoding
 
@@ -10977,8 +10985,11 @@ RV64:
 
 ===== Description
 
-The SATI instruction saturates `rs1` to a signed range determined by the
-immediate `uimm5` or `uimm6` and writes the result to `rd`.
+The SATI instruction saturates `rs1` to the signed range
+[-(2^width-1^), 2^width-1^-1] where `width` is specified by `uimm5`+1(RV32) or
+`uimm6`+1(RV64). If the value exceeds the range, the result is clamped to the
+nearest bound and the `vxsat` overflow flag is set. Values within the range are
+passed through unchanged.
 
 ===== Operation
 
@@ -11021,18 +11032,6 @@ else if (s1 >_s maxval):
 else:
     X[rd] = s1
 ----
-
-===== Mnemonic
-
-sati _rd_, _rs1_, _width_
-
-===== Description
-
-The SATI instruction saturates `rs1` to the signed range
-[-(2^width-1^), 2^width-1^-1] where `width` is specified by `uimm5`+1(RV32) or
-`uimm6`+1(RV64). If the value exceeds the range, the result is clamped to the
-nearest bound and the `vxsat` overflow flag is set. Values within the range are
-passed through unchanged.
 
 ===== Notes
 
@@ -11086,8 +11085,11 @@ RV64:
 
 ===== Description
 
-The USATI instruction saturates `rs1` to the unsigned range [0, maxval]
-determined by the immediate `uimm5` or `uimm6` and writes the result to `rd`.
+The USATI instruction saturates `rs1` to the unsigned range [0, 2^width^-1]
+where `width` is specified by `uimm5`(RV32) or `uimm6`(RV64). Negative values
+are clamped to zero and values exceeding the maximum are clamped to 2^width^-1.
+When clamping occurs, the `vxsat` overflow flag is set. Values already within
+range are passed through unchanged.
 
 ===== Operation
 
@@ -11129,19 +11131,6 @@ else:
     X[rd] = s1
 ----
 
-===== Mnemonic
-
-usati _rd_, _rs1_, _uimm5_ (RV32) +
-usati _rd_, _rs1_, _uimm6_ (RV64)
-
-===== Description
-
-The USATI instruction saturates `rs1` to the unsigned range [0, 2^width^-1]
-where `width` is specified by `uimm5`(RV32) or `uimm6`(RV64). Negative values
-are clamped to zero and values exceeding the maximum are clamped to 2^width^-1.
-When clamping occurs, the `vxsat` overflow flag is set. Values already within
-range are passed through unchanged.
-
 ===== Notes
 
 * `vxsat` is set to 1 if saturation occurs.
@@ -11152,7 +11141,7 @@ range are passed through unchanged.
 
 ===== Mnemonic
 
-psati.dh _rd_p_, _rs1_p_, _uimm4_
+psati.dh _rd_p_, _rs1_p_, _width_
 
 ===== Encoding
 
@@ -11180,9 +11169,9 @@ PSATI.DH performs packed 16-bit halfword signed saturation on double-wide
 (register-pair) operands. It is equivalent to two PSATI.H operations: one on the
 even registers and one on the odd registers of each pair. Both operands (`rd_p`,
 `rs1_p`) are register pairs and must specify even register numbers. Each halfword
-element is saturated to the signed range [-(2^n), 2^n - 1], where n is specified
-by the 4-bit unsigned immediate. When clamping occurs, the `vxsat` overflow flag
-is set. Available only in RV32.
+element is saturated to the signed range [-(2^width-1^), 2^width-1^-1], where
+`width` is specified by `uimm4`+1. When clamping occurs, the `vxsat` overflow
+flag is set. Available only in RV32.
 
 ===== Operation
 
@@ -11221,26 +11210,16 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
-===== Mnemonic
+===== Notes
 
-psati.dh _rd_p_, _rs1_p_, _width_
-
-===== Description
-
-PSATI.DH performs packed 16-bit halfword signed saturation on double-wide
-(register-pair) operands. It is equivalent to two PSATI.H operations: one on the
-even registers and one on the odd registers of each pair. Both operands (`rd_p`,
-`rs1_p`) are register pairs and must specify even register numbers. Each halfword
-element is saturated to the signed range [-(2^width-1^), 2^width-1^-1], where
-`width` is specified by `uimm4`+1. When clamping occurs, the `vxsat` overflow
-flag is set. Available only in RV32.
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSATI.DW (RV32)
 
 ===== Mnemonic
 
-psati.dw _rd_p_, _rs1_p_, _uimm5_
+psati.dw _rd_p_, _rs1_p_, _width_
 
 ===== Encoding
 
@@ -11268,8 +11247,8 @@ immediate format with word elements. Available only in RV32.
 PSATI.DW performs signed saturation on each 32-bit element across a double-wide
 (register-pair) source. It is equivalent to two SATI operations: one on the even
 registers and one on the odd registers of each pair. Each element is clamped to
-the range [-2^n, 2^n - 1] where `n` is encoded in the `uimm5` field. If
-saturation occurs, `vxsat` is set. The destination (`rd_p`) and source
+the range [-2^width-1^, 2^width-1^-1] where `width` is specified by `uimm5`+1.
+If saturation occurs, `vxsat` is set. The destination (`rd_p`) and source
 (`rs1_p`) are register pairs and must specify even register numbers. Available
 only in RV32.
 
@@ -11303,19 +11282,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
-===== Mnemonic
+===== Notes
 
-psati.dw _rd_p_, _rs1_p_, _width_
-
-===== Description
-
-PSATI.DW performs signed saturation on each 32-bit element across a double-wide
-(register-pair) source. It is equivalent to two SATI operations: one on the even
-registers and one on the odd registers of each pair. Each element is clamped to
-the range [-2^width-1^, 2^width-1^-1] where `width` is specified by `uimm5`+1.
-If saturation occurs, `vxsat` is set. The destination (`rd_p`) and source
-(`rs1_p`) are register pairs and must specify even register numbers. Available
-only in RV32.
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PUSATI.DH (RV32)
@@ -11350,8 +11319,8 @@ immediate format with packed halfword elements. Available only in RV32.
 PUSATI.DH performs unsigned saturation on each packed 16-bit element across a
 double-wide (register-pair) source. It is equivalent to two PUSATI.H operations:
 one on the even registers and one on the odd registers of each pair. Each
-element is clamped to the range [0, 2^n - 1] where `n` is encoded in the
-`uimm4` field. If saturation occurs, `vxsat` is set. The destination (`rd_p`)
+element is clamped to the range [0, 2^width^-1] where `width` is specified by
+`uimm4`. If saturation occurs, `vxsat` is set. The destination (`rd_p`)
 and source (`rs1_p`) are register pairs and must specify even register numbers.
 Available only in RV32.
 
@@ -11388,19 +11357,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
-===== Mnemonic
+===== Notes
 
-pusati.dh _rd_p_, _rs1_p_, _uimm4_
-
-===== Description
-
-PUSATI.DH performs unsigned saturation on each packed 16-bit element across a
-double-wide (register-pair) source. It is equivalent to two PUSATI.H operations:
-one on the even registers and one on the odd registers of each pair. Each
-element is clamped to the range [0, 2^width^-1] where `width` is specified by
-`uimm4`. If saturation occurs, `vxsat` is set. The destination (`rd_p`)
-and source (`rs1_p`) are register pairs and must specify even register numbers.
-Available only in RV32.
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PUSATI.DW (RV32)
@@ -11435,8 +11394,8 @@ immediate format with word elements. Available only in RV32.
 PUSATI.DW performs unsigned saturation on each 32-bit element across a
 double-wide (register-pair) source. It is equivalent to two USATI operations:
 one on the even registers and one on the odd registers of each pair. Each
-element is clamped to the range [0, 2^n - 1] where `n` is encoded in the
-`uimm5` field. If saturation occurs, `vxsat` is set. The destination (`rd_p`)
+element is clamped to the range [0, 2^width^-1] where `n` is specified by
+`uimm5`. If saturation occurs, `vxsat` is set. The destination (`rd_p`)
 and source (`rs1_p`) are register pairs and must specify even register numbers.
 Available only in RV32.
 
@@ -11469,19 +11428,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
-===== Mnemonic
+===== Notes
 
-pusati.dw _rd_p_, _rs1_p_, _uimm5_
-
-===== Description
-
-PUSATI.DW performs unsigned saturation on each 32-bit element across a
-double-wide (register-pair) source. It is equivalent to two USATI operations:
-one on the even registers and one on the odd registers of each pair. Each
-element is clamped to the range [0, 2^width^-1] where `n` is specified by
-`uimm5`. If saturation occurs, `vxsat` is set. The destination (`rd_p`)
-and source (`rs1_p`) are register pairs and must specify even register numbers.
-Available only in RV32.
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 === Shift Operations
@@ -13894,6 +13843,9 @@ for i = 0 .. (XLEN/16 - 1):
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSLAI.W (RV64)
@@ -13952,6 +13904,9 @@ for i = 0 .. (XLEN/32 - 1):
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== SSHA (RV32)
@@ -14012,6 +13967,9 @@ else:
         X[rd] = shx[31:0]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== SSHAR (RV32)
@@ -14133,6 +14091,9 @@ else:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== SRARI
@@ -14403,6 +14364,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSHA.DWS (RV32)
@@ -14481,6 +14445,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSHAR.DHS (RV32)
@@ -14570,6 +14537,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSHAR.DWS (RV32)
@@ -14654,6 +14624,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSLAI.DH (RV32)
@@ -14727,6 +14700,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PSSLAI.DW (RV32)
@@ -14798,6 +14774,9 @@ X[rd_p * 2]     = d_lo
 X[rd_p * 2 + 1] = d_hi
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 === Pair Operations
@@ -19739,6 +19718,9 @@ for i = 0 .. 3:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPRI.B (RV32)
@@ -20003,6 +19985,9 @@ for i = 0 .. 3:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPRIU.B (RV32)
@@ -20064,6 +20049,9 @@ for i = 0 .. 3:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPRU.BS (RV32)
@@ -20122,6 +20110,9 @@ for i = 0 .. 3:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPI.H (RV32)
@@ -20180,6 +20171,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIP.HS (RV32)
@@ -20238,6 +20232,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPRI.H (RV32)
@@ -20298,6 +20295,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPR.HS (RV32)
@@ -20359,6 +20359,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPIU.H (RV32)
@@ -20415,6 +20418,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPU.HS (RV32)
@@ -20469,6 +20475,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPRIU.H (RV32)
@@ -20528,6 +20537,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PNCLIPRU.HS (RV32)
@@ -20588,6 +20600,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== NCLIPI (RV32)
@@ -20642,6 +20657,9 @@ else:
     X[rd] = shx[31:0]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== NCLIP (RV32)
@@ -20696,6 +20714,9 @@ else:
     X[rd] = shx[31:0]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== NCLIPRI (RV32)
@@ -20753,6 +20774,9 @@ else:
     X[rd] = round_shx[31:0]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== NCLIPR (RV32)
@@ -20810,6 +20834,9 @@ else:
     X[rd] = round_shx[31:0]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== NCLIPIU (RV32)
@@ -20862,6 +20889,9 @@ else:
     X[rd] = shx[31:0]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== NCLIPU (RV32)
@@ -20912,7 +20942,9 @@ else:
     X[rd] = shx[31:0]
 ----
 
+===== Notes
 
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== NCLIPRIU (RV32)
@@ -20968,6 +21000,9 @@ else:
     X[rd] = round_shx[31:0]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== NCLIPRU (RV32)
@@ -21023,6 +21058,9 @@ else:
     X[rd] = round_shx[31:0]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 === Multiply High (same-width)
@@ -21869,6 +21907,9 @@ for i = 0 .. (XLEN/16 - 1):
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PMULQR.H
@@ -21986,6 +22027,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== PMULQR.W (RV64)
@@ -22041,6 +22085,9 @@ for i = 0 .. 1:
 X[rd] = d
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== MULQ (RV32)
@@ -22097,6 +22144,9 @@ else:
     X[rd] = (signed(a) * signed(b))[126:63]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 ==== MULQR (RV32)
@@ -22154,6 +22204,9 @@ else:
     X[rd] = (signed(a) * signed(b) + 2^62)[126:63]
 ----
 
+===== Notes
+
+* `vxsat` is set to 1 if saturation occurs in any element.
 
 <<<
 === Multiply-High Accumulate
