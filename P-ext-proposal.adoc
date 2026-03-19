@@ -21288,46 +21288,6 @@ X[rd] = d
 * The per-lane result corresponds to rounding the mixed signed×unsigned product
   before extracting bits [31:16].
 
-PMULHU.H:
-
-    let s1 = X[rs1];
-    let s2 = X[rs2];
-    var d : bits(xlen);
-    foreach (i from 0 to sizeof(xlen_bytes)/2 - 1) {
-        let s1_h = s1[(i*16+15)..(i*16)];
-        let s2_h = s2[(i*16+15)..(i*16)];
-        d[(i*16+15)..(i*16)] =
-            to_bits(32, unsigned(s1_h) * unsigned(s2_h))[31..16];
-    }
-    X[rd] = d;
-
-PMULHRU.H:
-
-    let s1 = X[rs1];
-    let s2 = X[rs2];
-    var d : bits(xlen);
-    foreach (i from 0 to sizeof(xlen_bytes)/2 - 1) {
-        let s1_h = s1[(i*16+15)..(i*16)];
-        let s2_h = s2[(i*16+15)..(i*16)];
-        d[(i*16+15)..(i*16)] =
-            to_bits(32, unsigned(s1_h) * unsigned(s2_h) + 2^15)[31..16];
-    }
-    X[rd] = d;
-
-PMULQR.H:
-
-    let s1 = X[rs1];
-    let s2 = X[rs2];
-    var d : bits(xlen);
-    foreach (i from 0 to sizeof(xlen_bytes)/2 - 1) {
-        let s1_h = s1[(i*16+15)..(i*16)];
-        let s2_h = s2[(i*16+15)..(i*16)];
-        d[(i*16+15)..(i*16)] =
-            if (s1_h == 0x8000) & (s2_h == 0x8000) then { vxsat = 1; 0x7FFF }
-                else to_bits(32, signed(s1_h) * signed(s2_h) + 2^14)[30..15];
-    }
-    X[rd] = d;
-
 <<<
 ==== PMULHU.H
 
