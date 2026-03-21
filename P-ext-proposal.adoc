@@ -745,9 +745,12 @@ and packed byte elements.
 {reg:[
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 5, name: 'rd' },
-    { bits: 4, name: 0x2 },
+    { bits: 3, name: 0x2 },
+    { bits: 1, name: 0x0 },
     { bits: 8, name: 'imm[7:0]' },
-    { bits: 8, name: 0xb4 },
+    { bits: 1, name: 0x0 },
+    { bits: 2, name: 0x2 },
+    { bits: 5, name: 0x16, attr: ['PLI.B'] },
 ]}
 ....
 
@@ -787,7 +790,7 @@ and packed halfword elements.
     { bits: 3, name: 0x2 },
     { bits: 10, name: 'imm[8:0|9]' },
     { bits: 2, name: 0x0 },
-    { bits: 5, name: 0x16 },
+    { bits: 5, name: 0x16, attr: ['PLI.H'] },
 ]}
 ....
 
@@ -829,7 +832,7 @@ and packed word elements. This instruction exists only for RV64.
     { bits: 3, name: 0x2 },
     { bits: 10, name: 'imm[8:0|9]' },
     { bits: 2, name: 0x1 },
-    { bits: 5, name: 0x16 },
+    { bits: 5, name: 0x16, attr: ['PLI.W'] },
 ]}
 ....
 
@@ -872,7 +875,7 @@ loaded into the upper bits of each halfword element.
     { bits: 3, name: 0x2 },
     { bits: 10, name: 'imm[6|15:7]' },
     { bits: 2, name: 0x0 },
-    { bits: 5, name: 0x1e },
+    { bits: 5, name: 0x1e, attr: ['PLUI.H'] },
 ]}
 ....
 
@@ -917,7 +920,7 @@ only for RV64.
     { bits: 3, name: 0x2 },
     { bits: 10, name: 'imm[22|31:23]' },
     { bits: 2, name: 0x1 },
-    { bits: 5, name: 0x1e },
+    { bits: 5, name: 0x1e, attr: ['PLUI.W'] },
 ]}
 ....
 
@@ -960,9 +963,12 @@ only for RV32 and uses a register-pair destination `rd_p`.
     { bits: 7, name: 0x1b, attr: ['OP-IMM-32'] },
     { bits: 1, name: 0x0 },
     { bits: 4, name: 'rd_p' },
-    { bits: 4, name: 0x2 },
+    { bits: 3, name: 0x2 },
+    { bits: 1, name: 0x0 },
     { bits: 8, name: 'imm[7:0]' },
-    { bits: 8, name: 0x34 },
+    { bits: 1, name: 0x0 },
+    { bits: 2, name: 0x2 },
+    { bits: 5, name: 0x6, attr: ['PLI.DB'] },
 ]}
 ....
 
@@ -1011,7 +1017,7 @@ exists only for RV32 and uses a register-pair destination `rd_p`.
     { bits: 3, name: 0x2 },
     { bits: 10, name: 'imm[8:0|9]' },
     { bits: 2, name: 0x0 },
-    { bits: 5, name: 0x6 },
+    { bits: 5, name: 0x6, attr: ['PLI.DH'] },
 ]}
 ....
 
@@ -1064,7 +1070,7 @@ This instruction exists only for RV32 and uses a register-pair destination
     { bits: 3, name: 0x2 },
     { bits: 10, name: 'imm[6|15:7]' },
     { bits: 2, name: 0x0 },
-    { bits: 5, name: 0xe },
+    { bits: 5, name: 0xe, attr: ['PLUI.DH'] },
 ]}
 ....
 
@@ -11159,7 +11165,8 @@ register-pair w-uimm format. Available only in RV32.
     { bits: 4, name: 'uimm4' },
     { bits: 3, name: 0x1 },
     { bits: 1, name: 0x0 },
-    { bits: 4, name: 0x6 },
+    { bits: 3, name: 0x6, attr: ['PSATI.DH'] },
+    { bits: 1, name: 0x0 },
 ]}
 ....
 
