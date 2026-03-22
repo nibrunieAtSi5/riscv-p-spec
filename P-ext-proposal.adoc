@@ -105,7 +105,7 @@ The “Q-format” multiplication, MULQ, is similar to MULH, but is
 applicable only when the two arguments have the same width and when both
 arguments are interpreted as signed values, not unsigned. If both
 arguments are w bits wide, then MULQ computes the full double-width
-product shifted right by w−1bits. If this result would be corrupted by
+product shifted right by w−1 bits. If this result would be corrupted by
 overflow (possible only when multiplying two minimum negative values
 −2^w−1^×−2^w−1^), then the result is usually saturated implicitly to the
 maximum positive value, 2^w−1^ − 1. (In contrast, MULH and MULHR can
@@ -623,7 +623,7 @@ PSAS.<S>X
 
 PSSA.<S>X
 
-PAAS.<S>.X
+PAAS.<S>X
 
 PASA.<S>X
 
