@@ -25,7 +25,7 @@ ASCIIDOCTOR_HTML := asciidoctor
 OPTIONS := --trace \
            -a compress \
            -a revdate=${DATE} \
-           -a pdf-style=docs-resources/themes/riscv-pdf.yml \
+           -a pdf-theme=docs-resources/themes/riscv-pdf.yml \
            -a pdf-fontsdir=docs-resources/fonts \
            $(XTRA_ADOC_OPTS) \
            -D build \
