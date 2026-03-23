@@ -138,8 +138,8 @@ never overflow.)
 |SHAR |{nbsp} |SHA with rounding
 |SHL |{nbsp} |shift left or right, logical (unsigned)
 |SHLR |{nbsp} |SHL with rounding
-|SLL |I |Shift left, logical
-|SRA |I |Shift right, arithmetic
+|SLL |I |shift left, logical
+|SRA |I |shift right, arithmetic
 |SRAR |{nbsp} |SRA with rounding
 |SRL |I |shift right, logical
 |SSHA |{nbsp} |saturating SHA
