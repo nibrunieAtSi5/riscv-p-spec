@@ -22930,7 +22930,6 @@ Operation::
 
 [source,pseudocode]
 ----
-# RV32
 a = X[rs1]
 b = X[rs2]
 if (a == 0x80000000) & (b == 0x80000000):
@@ -22981,7 +22980,6 @@ Operation::
 
 [source,pseudocode]
 ----
-# RV32
 a = X[rs1]
 b = X[rs2]
 if (a == 0x80000000) & (b == 0x80000000):
