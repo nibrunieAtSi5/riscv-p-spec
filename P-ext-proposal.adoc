@@ -13509,7 +13509,7 @@ psshl.hs _rd_, _rs1_, _rs2_
 
 Encoding::
 
-PSSHA.HS is encoded in the OP-IMM-32 major opcode.
+PSSHL.HS is encoded in the OP-IMM-32 major opcode.
 
 [wavedrom, ,svg]
 ....
