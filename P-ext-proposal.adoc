@@ -22941,15 +22941,6 @@ if (a == 0x80000000) & (b == 0x80000000):
     vxsat = 1
 else:
     X[rd] = (signed(a) * signed(b))[62:31]
-
-# RV64
-a = X[rs1]
-b = X[rs2]
-if (a == 0x8000000000000000) & (b == 0x8000000000000000):
-    X[rd] = 0x7FFFFFFFFFFFFFFF
-    vxsat = 1
-else:
-    X[rd] = (signed(a) * signed(b))[126:63]
 ----
 
 Notes::
@@ -23001,15 +22992,6 @@ if (a == 0x80000000) & (b == 0x80000000):
     vxsat = 1
 else:
     X[rd] = (signed(a) * signed(b) + 2^30)[62:31]
-
-# RV64
-a = X[rs1]
-b = X[rs2]
-if (a == 0x8000000000000000) & (b == 0x8000000000000000):
-    X[rd] = 0x7FFFFFFFFFFFFFFF
-    vxsat = 1
-else:
-    X[rd] = (signed(a) * signed(b) + 2^62)[126:63]
 ----
 
 Notes::
