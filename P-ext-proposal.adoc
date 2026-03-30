@@ -14027,7 +14027,7 @@ Description::
 
 The PSSHL.HS instruction performs an unsigned variable shift on each packed 16-bit
 element of `rs1` using the signed shift amount in `rs2[7:0]`. Left shifts saturate
-to the signed 16-bit range.
+to the unsigned 16-bit range.
 
 Operation::
 
